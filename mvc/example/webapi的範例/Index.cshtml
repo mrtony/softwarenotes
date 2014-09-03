@@ -1,0 +1,48 @@
+﻿<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">ASP.NET Web API</a></p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function processAjaxJsonString() {
+            //alert('test' + $("#debugMsg").text());
+            $.getJSON("/api/values?comp=8560&cosy=8560&sett=9801852",
+                function (data) {
+                    debugger;
+                    var obj = $.parseJSON(data);
+                    console.log(obj);
+                    console.log(obj.TARoot);
+                    //$("#debugMsg").html(data);
+            });
+
+            //$("#debugMsg").html("<h1>test</h1>");
+        }
+
+        function processAjaxJsonObject() {
+            //alert('test' + $("#debugMsg").text());
+            $.getJSON("/api/values?comp=8560&cosy=8560&sett=9801852&tmp=1",
+                function (data) {
+                    debugger;
+                    console.log(data);
+                    console.log(data.TARoot);
+                    //$("#debugMsg").html(data);
+            });
+
+            //$("#debugMsg").html("<h1>test</h1>");
+        }
+    </script>
+</header>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>測試Webapi</h3>
+        <button id="btnAjaxJsonString" onclick="processAjaxJsonString()">Run Ajax and parsing JSON string</button>
+        <button id="btnAjaxJsonObject" onclick="processAjaxJsonObject()">Run Ajax and parsing JSON object</button>
+        <span id="debugMsg"></span>
+    </section>
+</div>

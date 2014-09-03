@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script>
+    function setStyle(elements, prop, val) {
+        for (var i = 0, len = elements.length; i < len; ++i) {
+            document.getElementById(elements[i]).style[prop] = val;
+        }
+    }
+
+    function setCSS(el, styles) {
+        for ( var prop in styles ) {
+            if (!styles.hasOwnProperty(prop)) continue;
+            setStyle(el, prop, styles[prop]);
+        }
+    }
+
+    $( document ).ready(function() {
+        // Handler for .ready() called.
+        setCSS(['foo', 'bar', 'baz'], {
+            color: 'white',
+            background: 'black',
+            fontSize: '16px',
+            fontFamily: 'georgia, times, serif'
+        });
+    });
+    </script>
+
+</head>
+<body>
+    <div>
+        <p id="foo">Foo</p>
+        <p id="bar">Bar</p>
+        <p id="baz">baz</p>
+    </div>
+</body>
+</html>

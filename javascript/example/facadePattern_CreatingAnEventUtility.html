@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script>
+        var DED = window.DED || {};
+
+        DED.util = {};
+        DED.util.Event = {
+            getEvent: function(e) {
+                return e || window.event;
+            },
+            getTarget: function(e) {
+                return e.target || e.srcElement;
+            },
+            stopPropagation: function(e) {
+                if (e.stopPropagation) {
+                    e.stopPropagation();
+                }
+                else {
+                    e.cancelBubble = true;
+                }
+            },
+            preventDefault: function(e) {
+                if (e.preventDefault) {
+                    e.preventDefault();
+                }
+                else {
+                    e.returnValue = false;
+                }
+            },
+            stopEvent: function(e) {
+                this.stopPropagation(e);
+                this.preventDefault(e);
+            }
+        };
+
+        $(document).on('click', '#btnTest', function(e) {
+            // Who clicked me.
+            console.log(DED.util.Event.getTarget(e));
+            // Stop propgating and prevent the default action.
+            DED.util.Event.stopEvent(e);
+        })
+    </script>
+</head>
+<body>
+<button id="btnTest" type="button" onclick="">I am a button</button>
+</body>
+</html>
