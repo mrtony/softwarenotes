@@ -9,4 +9,7 @@ MVC-開發過程的問題
 有找到[這篇Should I use a list or an array?](http://programmers.stackexchange.com/questions/221892/should-i-use-a-list-or-an-array)的answer2有一位神人回了一大篇. 但基本上他的想法是,如果知道資料的大小且是固定的,用Array的效能會比較好. 如果資料是動態的,用List<T>.
 4. 有沒有辦法直接將SQL query的結果轉成List?
 可以用關鍵字 *C# SQL to List* 作search. 有找到[這篇](http://stackoverflow.com/questions/18754688/c-sharp-how-to-implement-method-that-return-list-of-sql-result)可以先看一下.
-5. 123
+5. 在IE中第一次開畫面後,Listview的每個項目會顯示一個點在前面
+實驗後發現與載入的順序有關。jQuery mobile的js檔必需要在DOM載入前引入。
+6. 123
+7. 123
