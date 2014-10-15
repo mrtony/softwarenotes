@@ -134,8 +134,35 @@ RequireJS - 使用方式
 * paths：文件路徑及名稱。若有定義baseUrl，可不需指定路徑。
 
 
-## map
-可用來指定載入不同版本的函式庫。
+## map的使用方式
+可用來指定載入不同版本相容AMD的函式庫。以下為官方所提出的範例：
+
+	requirejs.config({
+	    map: {
+	        'some/newmodule': {
+	            'foo': 'foo1.2'
+	        },
+	        'some/oldmodule': {
+	            'foo': 'foo1.0'
+	        }
+	    }
+	});
+當 **some/newmodule** 被requirejs載入時，會去載入foo1.2.js。 而 **some/oldmodule** 被requirejs載入時，會去載入foo1.0.js。 
+
+除此之外map還支援 **\*** 的使用方式：
+
+	requirejs.config({
+	    map: {
+	        '*': {
+	            'foo': 'foo1.2'
+	        },
+	        'some/oldmodule': {
+	            'foo': 'foo1.0'
+	        }
+	    }
+	});
+除了**some/oldmodule**被requirejs載入時，會去載入foo1.0.js外，其他所有的module都會使用foo1.2.js。
+
 
 ## paths參數的進階用法
 可以配置一個模組的載入可以有多種方式，若第一個方式失敗會以第二種方式載入。
@@ -147,6 +174,10 @@ RequireJS - 使用方式
 	    'lib/jquery']
 	    }
 	})
+
+
+## Dom Ready的處理
+在某些應用上會需要使用DOM Ready來處理HTML DOM載完後的初始化工作。 有時requirejs在DOM載完前就已經完成所有js檔的載入工作。 但有一些程序必需等到DOM載完時才能處理。 一些較新的browser會去等DOMContentLoaded事件發生後再去載入js，所以不會有什麼問題。但不是所有的browser都支援 **DOMContentLoaded** 。 而這個 **domReady** 模組實現了跨browser的DOM ready，因此可以解決部份browser不支援DOMContentLoaded的問題。
 
 ## 參考資料
 

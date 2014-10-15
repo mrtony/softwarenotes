@@ -1,7 +1,42 @@
 MVC的Webapi設計筆記
 ----------
 
-#### 設定Webapi method的屬性
+
+## 如何解決用Chrome取資料只回傳XML格式的資料
+* 解決方法1
+在Global.asax.cs中加入這一行
+
+		GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+* 解決方法2
+回傳方式改為HttpResponseMessage，而且強迫格式為json。
+
+		public HttpResponseMessage GetQueryContact()
+		{
+		    return new HttpResponseMessage()
+		    {
+		        Content = new StringContent(
+		            "<strong>test</strong>",
+		            Encoding.UTF8,
+		            "text/json"
+		        )
+		    };
+		}
+
+## 如何以client端要求的格式(Accetp)動態的回傳相應格式(json/xml)
+C#提供Request物件來取得client的要求格式：
+
+    if(Request.Headers.Accept.ToString().Contains("json"))
+    {
+        return "text/json";
+    }
+    else
+    {
+        return defaultOutput;
+    }
+
+參考 [Change WebAPI Default Output Format](http://inspectorit.com/tips-tricks/changing-webapi-default-output/)
+
+## 設定Webapi method的屬性
 因為webapi在binding action時,會去找Get/Post/Put/Delete開頭的函數.舉例來說如下:
 
 - Get()
@@ -31,7 +66,7 @@ ApplyDataChange()
 ```
 
 
-#### 如何讓ApiController回傳我們指定的方式
+## 如何讓ApiController回傳我們指定的方式
 ApiController類別的回傳值如果是JSON序列化字串,它會自動再幫倒忙加上'/',為了要XML-->JSON, 必需要有一些特殊的作法. 因為json.net在將XML轉為json字串後,不要再由webapi自動轉json回傳. 這裡示範手動回傳作法如下:
 
 ```
