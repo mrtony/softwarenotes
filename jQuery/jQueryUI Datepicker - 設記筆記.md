@@ -97,3 +97,24 @@ jQueryUI Datepicker - 設記筆記
 
         return result.html();
     };
+
+
+## 顯示相關按鈕
+在datepicker中可以顯示如**今天**或**關閉**的按鈕。
+* showButtonPanel: 設為true可顯示。
+* currentText：可改變showButtonPanel的按鈕的文字。
+
+## 做民國年轉換的注意事項
+
+* 在設定miniDate, maxDate時
+因為lib本身會去抓框內的值來做參考及設定，若發現其格式不符則會將其清空。因此要設定這2個參數時，必需將其值設為西元年格式，設定好後再轉為為民國年來顯示。
+* 在onSelect時
+在選擇後需要轉換為民國年並顯示。
+* 在BeforeShow時
+在畫出dpwindow時其參考的時間輸入框的資料且需是西元年格式，因此需要將資料轉為西元年格式再設到defaultDate。 另外在date-to的beforeshow時，若其資料為空，則取今天的日期。
+* 在onClose時
+因為有可能使用者是直接輸入的，所以在onClose也是與onSelect call同一個handler。處理上唯一的差別是去判斷參數的dateText與inst中所選的日期是否相同來處理。若2者相同表示使用者是去點選dp，若不同則是直接輸入。
+
+## Datepicker lib
+
+* _selectDate：在dp中選擇日期後會更新這個值。

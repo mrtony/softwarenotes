@@ -111,6 +111,11 @@ jqgrid - 設計筆記
 若grid上有refresh icon，在click後會以之前設定的url以ajax的方式去要資料，但會使用原本設定的url。
 
 
+## 增加Add,Edit,Delete的按鈕
+jqGrid本身有自己設計好的按鈕。假設table id = list47, pagereditData = plist47。要在下方的toolbar建立Add,Edit,Delete的按鈕的方式如下(前提是要先建好list47的jqgrid和pager id)：
+
+	$('#list47').navGrid('#plist47{edit:true,add:true,del:true})
+
 
 ## 重新查詢的方式
 
@@ -122,6 +127,65 @@ jqgrid - 設計筆記
 	jQuery('#dataTable').jqGrid('setGridParam', {data: data, page: 1})
 	jQuery('#dataTable').trigger('reloadGrid');
 
+## jsonreader的使用
+有試過拿掉jsonreader參數，在colModel中使用jsonmap可正常取得及顯示資料，所以有使用jsonmap時，應該不用再使用jsonreader。 但很奇怪的是在使用arcgis的example時，用了jsonmap卻還是要jsonreader，還沒弄懂個中原因。
+
+## 如何動態設定colModel中的Editrule
+參考 [jqgrid method](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:methods) 中的getColProp()取得要控制的col name的設定。 然後用setColProp()來設定該col的參數。比如說我們要設定某個col name的require為true，方式為：
+
+	$(”#grid_id”).setColProp('colname',{editrule:{require:true}); 
+
+## 使用內定的修改editGridRow改變資料
+* 參考jqgrid demo的Live Data Manipulation-EditRow
+* [參考jqgrid wiki](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:form_editing)
+
+其他的項目
+
+* 項目太多時，submit按鍵會消失 [jqGrid editGridRow submit button disappears gap between last field and submit](http://stackoverflow.com/questions/24389529/jqgrid-editgridrow-submit-button-disappears-gap-between-last-field-and-submit)
+
+		recreateForm: true
+
+* afterSubmit的用法： 在click送出後，會執行的callback。[jqGrid afterSubmit](http://stackoverflow.com/questions/13191183/jqgrid-aftersubmit)
+* closeAfterEdit：修改資料按送出後，會自動將dialog關閉。 
+
+## Hide/Show Colume
+Hide colume
+
+	$('#list47').hideCol("Comp")
+	$('#list47').jqGrid('hideCol', ["Comp"])
+
+Show Colume
+
+	$('#list47').showCol("Comp")
+	$('#list47').jqGrid('showCol', ["Comp"])
+
+在建立colume時就hide
+
+	{name: 'Comp', label: 'Comp', width: 170, jsonmap: 'Comp', editable:true, hidden: true}
+
+[Hidden Columns in jqGrid](http://stackoverflow.com/questions/1661800/hidden-columns-in-jqgrid)
+
+## Disable Row
+
+	$('#list47 input').attr("disabled", "disabled")
+
+## 太長的字換行
+在custom css中加入
+
+	.ui-jqgrid tr.jqgrow td {
+		white-space: normal !important;
+	}
+
+* [Wrapping Text lines in JqGrid](http://stackoverflow.com/questions/1730061/wrapping-text-lines-in-jqgrid)
+* [Wrapping text in a jQuery jqGrid cell](http://adayinthepit.com/2011/08/02/wrapping-text-in-a-jquery-jqgrid-cell/)
+
+
+## 將col設為readonly
+
+	editoptions:{readonly:true}
+
+
+
 ## 參考資料
 * [jqgrid demo](http://www.trirand.com/blog/jqgrid/jqgrid.html)
 * [jqgrid wiki](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:jqgriddocs)
@@ -129,3 +193,10 @@ jqgrid - 設計筆記
 * [jqGrid - submit buttons in each row: 點選row時按鈕才可以按](http://stackoverflow.com/questions/16717459/jquery-jqgrid-submit-buttons-in-each-row)
 * [簡睿隨筆：第4個jqGrid範例: 資料列處理](http://jdev.tw/blog/1640/jqgrid-data-manipulation)
 * [jqGrid工具使用心得分享](http://newsletter.ascc.sinica.edu.tw/news/read_news.php?nid=1643)
+* [jqgrid 单击事件获取数据](http://blog.csdn.net/xiguame/article/details/11191719)
+* [JqGrid相關操作方法列表備忘重點講解(超重要)](http://blog.csdn.net/hurryjiang/article/details/6891115)
+* [jqgrid post](http://stackoverflow.com/questions/4063682/jqgrid-post-data-to-server-to-fetch-row-data-filtering-and-searching)
+
+## jqgrid wiki參考資料
+* [ColModel API](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:colmodel_options)
+* [Data Manipilation (可使用的資料)](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:retrieving_data) : 說明支援xml, json,jsonp等格
