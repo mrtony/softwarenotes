@@ -22,6 +22,15 @@ MVC泛型 - List Dictionary
 	  new StudentName {FirstName="Rajesh", LastName="Rotti", ID=114}
 	};
 
+	//output: Craig
+    Console.WriteLine(students[0].FirstName);
+
+	//output: Craig,Shu,Gretchen,Rajesh
+    foreach (var item in students)
+    {
+        Console.Write(item.FirstName);
+    }
+
 ## List常用的Method和attribute
 
 * Add()
