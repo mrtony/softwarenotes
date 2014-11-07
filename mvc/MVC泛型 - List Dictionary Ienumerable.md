@@ -1,15 +1,15 @@
 MVC泛型 - List Dictionary
 ------
 
-
-## List的幾種宣告
+## List 用法
+### List的幾種宣告
 
 	List<int> list = new List<int>() { 1, 3, 5, 7, 9, 2, 4, 6, 8, 0 };
 	List<Card> cards = new List<Card>();
 
 
 
-## List的用法1
+### List的用法1
 參考 [How to: Initialize Objects by Using an Object Initializer (C# Programming Guide)](http://msdn.microsoft.com/en-us/library/bb397680.aspx)
 
 產生一個List
@@ -31,7 +31,7 @@ MVC泛型 - List Dictionary
         Console.Write(item.FirstName);
     }
 
-## List常用的Method和attribute
+### List常用的Method和attribute
 
 * Add()
 * Remove()
@@ -39,6 +39,7 @@ MVC泛型 - List Dictionary
 * Count
 * 
 
+參考 C# in a nutshell 5th edition
 
 ## Dictionary的用法1
 參考 [How to: Initialize a Dictionary with a Collection Initializer (C# Programming Guide)](http://msdn.microsoft.com/en-us/library/bb531208.aspx)
@@ -68,8 +69,38 @@ MVC泛型 - List Dictionary
 
     return result;
 
+## IEnumerable
+
+
+## 其他List議題
+
+### List<>與IList<T>有什麼不同？
+讀了幾篇網路上的文章後，我自己歸納如下
+* IList = Interface + List。也就是說只要I開頭的就只是Interface，所以不能實例化，而List是個Class所以可以實例化。
+
+	IList<Employee> EmpList = new List<Employee>();	//合法
+	List<Employee> EmpList = new List<Employee>();	//合法
+	IList<Employee> EmpList = new IList<Employee>();	//不合法
+
+而使用時機就是說，若不需要實例化List，則使用IList。
+
+## Book
+
+* c#5.0 in a nutshell 5th edition: Ch7 - Collections
+* 
+
+## Q&A
+
+* [why use IList or List?](http://stackoverflow.com/questions/8717582/why-use-ilist-or-list)
+* [Difference between IList<T\\> and List<T\\>](http://stackoverflow.com/questions/12369570/difference-between-ilistt-and-listt)
+
 ## 參考資料
 * [MSDN關於LIST的文件](http://msdn.microsoft.com/zh-tw/library/6sh2ey19(v=vs.110).aspx)
 * Headfirst C#原文，page#359
 * [如何使用C#將DataTable轉為自訂物件List<class>](http://kyleap.blogspot.tw/2014/01/cdatatablelist.html)
 * [Dictionary的一些簡單用法範例](http://www.dotnetperls.com/dictionary)
+* [C# Generic Method](http://www.dotnetperls.com/generic-method)：說明如何使用List<T\>作為回傳值的用法
+* [C# IList](http://www.dotnetperls.com/ilist): 範例說明IList的用法。
+* [C# IEnumerable](http://www.dotnetperls.com/ienumerable): 範例說明IEnumerable的用法。
+* [善用 IEnumerable 讓方法通吃 array 與 List](http://www.dotblogs.com.tw/city7/archive/2013/11/29/131970.aspx)
+* [IEnumerable、IEnumerator 與 IEnumerable<T>、IEnumerator<T>](http://xingulin.tumblr.com/post/48831985749/ienumerable-ienumerator)

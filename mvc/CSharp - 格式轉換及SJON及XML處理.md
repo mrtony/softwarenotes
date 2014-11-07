@@ -74,7 +74,7 @@ CSharp - 格式轉換及SJON及XML處理
 	    Console.WriteLine(obj_results["name"]);
 	}
 
-### XML陣列資料包含屬性的再用linq去找出我們要的資料範例
+### XML陣列資料包含屬性以動態型別取得JSON後再用linq去找出我們要的資料範例
 
     string xml = "<root><User id='2' name='tony'></User><User id='3' name='peter'></User></root>";
 
@@ -92,8 +92,10 @@ CSharp - 格式轉換及SJON及XML處理
                  where objs["name"].ToString() == "tony"
                  select objs;
 
+	Console.WriteLine(result.Count());
 	//output: tony
     Console.WriteLine(result.Single<JObject>()["name"].ToString());
+
 
 ### XML陣列資料包含屬性的轉成List<T\>範例
 
@@ -116,7 +118,61 @@ CSharp - 格式轉換及SJON及XML處理
 	{
 	    Console.Write(item);
 	}
+其中"User"指的是每一個row的element名稱,才可以正確的去對應並轉成list的item。
 
+### XML陣列資料包含屬性動態轉成List<T\>再套強型別範例
+
+    class User
+    {
+        public string id { get;set ;}
+        public string name { get; set; }
+    }
+
+	private List<T> JsonToList<T>(string json, string RowName)
+	{
+	    JObject restoredObject = JObject.Parse(json);
+	    JArray array = (JArray)restoredObject[RowName];
+	
+	    return array.ToObject<List<T>>();
+	}
+
+    private void button8_Click(object sender, EventArgs e)
+    {
+        string xml = "<root><User id='2' name='tony'></User><User id='3' name='peter'></User></root>";
+        List<User> myList = new List<User>();
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(xml);
+
+        string json = JsonConvert.SerializeXmlNode(doc);
+        json = JsonConvert.SerializeXmlNode(doc, Newtonsoft.Json.Formatting.None, true);
+        json = json.Replace("@", string.Empty);
+        myList = JsonToList<User>(json, "User");
+
+        Console.WriteLine(myList[0].name);
+    }
+
+### XML陣列資料包含屬性轉JSON以強型別轉List再作LINQ query範例
+
+    string xml = "<root><User id='2' name='tony'></User><User id='3' name='peter'></User></root>";
+
+    XmlDocument doc = new XmlDocument();
+    doc.LoadXml(xml);
+
+    string json = JsonConvert.SerializeXmlNode(doc);
+    json = JsonConvert.SerializeXmlNode(doc, Newtonsoft.Json.Formatting.None, true);
+    json = json.Replace("@", string.Empty);
+    JObject restoredObject = JObject.Parse(json);
+    JArray array = (JArray)restoredObject["User"];
+    List<User> myList = array.ToObject<List<User>>();
+
+    var result = from objs in myList
+                select objs;
+
+	//output: tony,peter
+    foreach (var item in result)
+    {
+        Console.WriteLine(item.name);
+    }
 ## 參考
 
 * [sing JSON.NET for dynamic JSON parsing](http://weblog.west-wind.com/posts/2012/Aug/30/Using-JSONNET-for-dynamic-JSON-parsing)：很棒

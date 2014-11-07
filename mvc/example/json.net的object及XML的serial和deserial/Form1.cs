@@ -149,5 +149,28 @@ namespace WindowsFormsApplication1
                 Console.Write(item.name);
             }
         }
+
+        private List<T> JsonToList<T>(string json, string RowName)
+        {
+            JObject restoredObject = JObject.Parse(json);
+            JArray array = (JArray)restoredObject[RowName];
+
+            return array.ToObject<List<T>>();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string xml = "<root><User id='2' name='tony'></User><User id='3' name='peter'></User></root>";
+            List<User> myList = new List<User>();
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+
+            string json = JsonConvert.SerializeXmlNode(doc);
+            json = JsonConvert.SerializeXmlNode(doc, Newtonsoft.Json.Formatting.None, true);
+            json = json.Replace("@", string.Empty);
+            myList = JsonToList<User>(json, "User");
+
+            Console.WriteLine(myList[0].name);
+        }
     }
 }
