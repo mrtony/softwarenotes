@@ -5,3 +5,11 @@
 ## 以字串方式取得類別物件中的Property的值 
 typeof(ClassName).GetProperty(PropertyName).GetValue(Instance, null);
 
+## 查詢目前系統的語系的encoding
+目的是為了知道Encoding.Default的預設語系，要先查詢目前使用的語系。
+
+	string path = @"c:\temp\MyTest.txt";
+	StreamReader oStreamReader = new StreamReader(path, true);
+	System.Diagnostics.Debug.WriteLine(oStreamReader.CurrentEncoding);
+
+[過StreamReader.CurrentEncoding判斷檔案的編碼](http://www.dotblogs.com.tw/rainmaker/archive/2013/05/20/104547.aspx)

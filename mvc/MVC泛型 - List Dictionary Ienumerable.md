@@ -9,7 +9,7 @@ MVC泛型 - List Dictionary
 
 
 
-### List的用法1
+### 加入物件到List
 參考 [How to: Initialize Objects by Using an Object Initializer (C# Programming Guide)](http://msdn.microsoft.com/en-us/library/bb397680.aspx)
 
 產生一個List
@@ -30,6 +30,10 @@ MVC泛型 - List Dictionary
     {
         Console.Write(item.FirstName);
     }
+
+### Insert物件到List
+
+	list.Insert(1, new ClassName() { lino=i.ToString()});
 
 ### List常用的Method和attribute
 
