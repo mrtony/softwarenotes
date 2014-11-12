@@ -16,6 +16,37 @@
 ## 以字串方式取得類別物件中的Property的值 
 typeof(ClassName).GetProperty(PropertyName).GetValue(Instance, null);
 
+## 類似JS for in作法取得物件中的Property的名字
+
+	foreach (PropertyInfo propertyInfo in oCacliais.GetType().GetProperties())
+	{
+	    if (propertyInfo.Name == "NameOfProperty")
+	        strPara = strPara + "&" + Attribute + "1=" + Data;
+	    else
+	    {
+	        strPara = strPara + "&" + propertyInfo.Name + "1=" + tmpLino4.First<JObject>()[propertyInfo.Name].ToString();
+	    }
+	}
+
+* [Looping through Object's properties in C#](http://www.codeproject.com/Articles/206999/Looping-through-Objects-properties-in-C-Sharp)
+* [Loop Through An Objects Properties In C#](http://stackoverflow.com/questions/957783/loop-through-an-objects-properties-in-c-sharp)
+* [Iterate through properties and values of an object returned via a linq query on a domain model](http://stackoverflow.com/questions/9724247/iterate-through-properties-and-values-of-an-object-returned-via-a-linq-query-on)
+* [loop through object and get properties](http://stackoverflow.com/questions/15586123/loop-through-object-and-get-properties)
+* [Reflection Property](http://www.dotnetperls.com/reflection-property)
+* [PropertyInfo.GetValue(myObject, null).GetType() returns “Object reference not set to an instance of an object.”](http://stackoverflow.com/questions/5748931/propertyinfo-getvaluemyobject-null-gettype-returns-object-reference-not-se)
+
+## 設定物件的Property的值
+
+	using System.Reflection;
+	MyObject obj = new MyObject();
+	PropertyInfo prop = obj.GetType().GetProperty("Name", BindingFlags.Public | BindingFlags.Instance);
+	if(null != prop && prop.CanWrite)
+	{
+	    prop.SetValue(obj, "MyName", null);
+	}
+
+[Set object property using reflection](http://stackoverflow.com/questions/619767/set-object-property-using-reflection)
+
 ## 查詢目前系統的語系的encoding
 目的是為了知道Encoding.Default的預設語系，要先查詢目前使用的語系。
 
