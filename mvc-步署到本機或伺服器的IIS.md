@@ -1,5 +1,6 @@
 mvc-步署到本機或伺服器的IIS
 ------
+此文件說明如何在Visual Studio下將網站步署到IIS
 
 ## 以檔案系統方式步署到本機IIS
 
@@ -30,9 +31,18 @@ mvc-步署到本機或伺服器的IIS
 ### 在IIS中的設定
 
 1. 先新增一個應用程式集區ContactMaintain，並將.net的版本設為4.0
-2. 再到DefaultSite的站台新增一個虛擬目錄，假設命名為ContactMaintain，並將實體目錄指向 C:\Temp\ContactMaintain
-![](https://googledrive.com/host/0B7okXOykSneqZWF0OVEzUks2MUk)
-3. 再到這個目錄下新增一個目錄，因為版本為1，將其命名為1，並將實體目錄指向 C:\Temp\ContactMaintain\1，並將應用程式集區指向先前建立好的集區ContactMaintain
-![](https://googledrive.com/host/0B7okXOykSneqQ3hLS1FKbmpWM2M)
+2. 再到DefaultSite的站台新增一個虛擬目錄，假設命名為ContactMaintain，並將實體目錄指向 C:\Temp\ContactMaintain\1
+
+![](https://googledrive.com/host/0B7okXOykSneqR2QzT1ZCOVR6RHM)
+![](https://googledrive.com/host/0B7okXOykSneqNWVuYWlFblFKSzA)
 
 如此就大功告成，可以在使用本機上的IIS來使用網站。而要實際步署到伺服器端的IIS也是相同的步驟，只是會先將檔案輸出到本機的目錄，再輸出到Server端。
+
+## 如何建立多個版本的網站供測試
+
+## 如何建立備緩切換版本
+在網站的第一個版本上線後，通常會繼續開發第2個版本，一旦第2個版本開發完成後，會希望有一段時間可以來測試，在測試完成並上線後，很有可能在第2版會發生問題，必需快速的切換回舊版本。 因此我們可以利用IIS中切換實體目錄的方式來解決這個問題。
+
+1. 第一個正式版本發行到某資料夾的 SiteName/1，建立的虛擬目錄名稱為SiteName，實體路徑指向 SiteName/1，並建立一個 SiteName的應用程式集區並指向該集區。
+2. 第二個正式版本發行到某資料夾的 SiteName/2，不需要再建立虛擬目錄，將實體路徑指向 SiteName/2，並建指向同一個 SiteName的應用程式集區。
+3. 一旦第二版發生問題需要切回第一版，只要再將實體路徑設為 SiteName/2 就可以將網站切回第一版了。
