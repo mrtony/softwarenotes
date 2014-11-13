@@ -12,6 +12,7 @@
 
 * [using 陳述式在實務應用上的基本觀念](http://blog.miniasp.com/post/2009/10/13/About-CSharp-using-Statement-misunderstanding-on-try-catch-finally.aspx)
 * [using 陳述式 (C# 參考)](http://msdn.microsoft.com/zh-tw/library/yh598w02.aspx)
+* [使用 using 或 try/finally 清理資源](http://www.dotblogs.com.tw/yc421206/archive/2011/06/09/27445.aspx)
 
 ## 以字串方式取得類別物件中的Property的值 
 typeof(ClassName).GetProperty(PropertyName).GetValue(Instance, null);
