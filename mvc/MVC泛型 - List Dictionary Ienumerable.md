@@ -45,7 +45,30 @@ MVC泛型 - List Dictionary
 
 參考 C# in a nutshell 5th edition
 
-## Dictionary的用法1
+## Dictionary的用法
+
+### 以 Dictionary來建立格式化的輸出
+Dictionary<string, string> sbcFieldName = new Dictionary<string, string>()
+{
+    {"SBCEmail", "電子郵件："},
+    {"SBCTel1No", "通訊電話："}
+};
+Dictionary<string, string> sbcFieldVal = new Dictionary<string, string>();
+
+sbcFieldVal.Add("SBCEmail", "test@mail.com");
+sbcFieldVal.Add("SBCTel1No", "1234567");
+
+foreach (var pair in sbcFieldName)
+{
+    if (string.IsNullOrEmpty(sbcFieldVal[pair.Key]) == false)
+        sbChangeList.Append("<li>").Append(sbcFieldName[pair.Key]).Append(sbcFieldVal[pair.Key]).Append("</li>");
+}
+
+//output:
+<li>電子郵件：test@mail.com</li>
+<li>通訊電話：：1234567</li>
+
+### 用法2
 參考 [How to: Initialize a Dictionary with a Collection Initializer (C# Programming Guide)](http://msdn.microsoft.com/en-us/library/bb531208.aspx)
 
 產生一個key pair，其中一個為類別

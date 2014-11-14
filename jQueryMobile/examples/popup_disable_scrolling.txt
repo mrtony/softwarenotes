@@ -1,0 +1,8 @@
+//解決開啟popup後會多出一條scrolling bar造成畫面跳動
+//http://stackoverflow.com/questions/17146745/how-to-disable-scrolling-of-list-view-when-popup-screen-display
+
+$(document).on('popupafteropen', '[data-role="popup"]' ,function( event, ui ) {
+    $('body').css('overflow','hidden');
+}).on('popupafterclose', '[data-role="popup"]' ,function( event, ui ) {
+    $('body').css('overflow','auto');
+});
