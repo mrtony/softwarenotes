@@ -32,8 +32,49 @@ mvc-Elmah-網站Log套件使用要點
 
 只要發生錯誤,就會顯示Error.cshtml的內容，而不會顯示一些系統的資訊。
 
+
+
+### Log存到檔案設定
+參考[使用 Elmah 來記錄 ASP.NET 網站的錯誤](http://huan-lin.blogspot.com/2013/02/something-about-elmah-error-logging.html)，在使用nuget安裝好Elmah後，會在web.config中加入一個elmah的空區段。將xml及mail的設定加入。
+	<?xml version="1.0" encoding="utf-8"?>
+	<configuration>
+	  <elmah>
+	    <security allowRemoteAccess="false" />
+	    <errorLog type="Elmah.XmlFileErrorLog, Elmah" logPath="~/Log/Error" />
+	  </elmah>
+	</configuration>
+
+在發生錯誤後，log會存到網站目錄的Log資料夾中。
+
+也可以指定絕對路徑-參考[如何偵錯--ELMAH 絕妙的偵錯工具安全架設於ASP.NET MVC](http://demo.tc/Post/606)
+
+	<errorLog type="Elmah.XmlFileErrorLog, Elmah" logPath="D:/Elmah_Log" />   
+
 ### 發生錯誤時寄信到指定信箱
 
+	<?xml version="1.0" encoding="utf-8"?>
+	<configuration>
+	  <elmah>
+	    <security allowRemoteAccess="false" />
+	    <errorMail
+	      from="michael@mycompany.com"
+	      to="michael@mycompany.com"
+	      subject="XX 網站又出包了!"
+	      async="true"     
+	      smtpServer="mail.mycompany.com"
+	      smtpPort="25"
+	      />
+	  </elmah>
+	</configuration>
 
-### Log要存到檔案或SQL？
+### Log檔存到SQL
+參考[使用Asp.Net MVC打造Web Api (15) - 使用Elmah收集錯誤資訊](http://kirkchen.logdown.com/posts/147650-using-aspnet-mvc-to-build-web-api-15-use-elmah-to-collect-error-messages)
+
+### 設定篩選器來過濾錯誤資訊-todo
+並非所有的錯誤資料都需要記錄，所以可以設定篩選器來過濾不要的資訊。 參考[如何為網站錯誤記錄模組 Elmah 設定篩選器來過濾錯誤資訊](http://coding.anyun.tw/2012/02/23/elmah-errorfilter/)
+
+
+## 參考
+* [官方wiki](https://code.google.com/p/elmah/wiki/DotNetSlackersArticle)
+* [網站偵錯紀錄-Elmah-設定小記錄](http://www.dotblogs.com.tw/c5todo/archive/2013/10/16/124499.aspx): 有教使用try/catch時如何Elmah做log.
 
