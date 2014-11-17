@@ -8,6 +8,12 @@ mvc-Elmah-網站Log套件使用要點
 
 ## 使用技巧
 
+### 如何產生第一個錯誤來做Log?
+1. 建立一個標準的MVC 網際網路應用程式
+2. 執行並輸入http://localhost:56851/index
+3. 因為該路徑不存在，會出現**'/' 應用程式中發生伺服器錯誤。**
+4. 到http://localhost:56851/elmah可以取得該error log
+
 ### 如何瀏覽Dashboard？
 
 ### 是否要允許遠端瀏覽？
