@@ -35,6 +35,9 @@ MVC泛型 - List Dictionary
 
 	list.Insert(1, new ClassName() { lino=i.ToString()});
 
+### DataTable與List互轉
+在C#中沒有DataTabel轉成List的Method，所以大部份的資料都顯示要自己寫。
+
 ### List常用的Method和attribute
 
 * Add()

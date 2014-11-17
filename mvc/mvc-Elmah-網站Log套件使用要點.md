@@ -12,7 +12,6 @@ mvc-Elmah-網站Log套件使用要點
 
 ### 是否要允許遠端瀏覽？
 
-
 ### 發生錯誤自動導到Error.aspx
 是否可以用類似的方法在MVC專案中導到Error.cshtml?
 
