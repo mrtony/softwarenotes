@@ -17,6 +17,9 @@ Get-Package
 	Install-Package jQuery -Version 1.8.3
 	Install-Package jQuery -Version 1.11.1
 
+## 如何手動更新套件
+
+	Update-Package NLog
 
 ## 常用套件ID
 
