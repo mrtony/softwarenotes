@@ -73,6 +73,11 @@ mvc-Elmah-網站Log套件使用要點
 ### 設定篩選器來過濾錯誤資訊-todo
 並非所有的錯誤資料都需要記錄，所以可以設定篩選器來過濾不要的資訊。 參考[如何為網站錯誤記錄模組 Elmah 設定篩選器來過濾錯誤資訊](http://coding.anyun.tw/2012/02/23/elmah-errorfilter/)
 
+## 其他雜記
+
+### 有用try/catch就無法補捉
+參考[使用NLog - Advanced .NET Logging (1)](http://kevintsengtw.blogspot.tw/2011/10/nlog-advanced-net-logging-1.html#.VGqSufmUdGY)
+
 
 ## 參考
 * [官方wiki](https://code.google.com/p/elmah/wiki/DotNetSlackersArticle)

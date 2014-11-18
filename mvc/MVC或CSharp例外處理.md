@@ -88,3 +88,4 @@ MVC或CSharp例外處理
 * [msdn 例外處理陳述式 (C# 參考)](http://msdn.microsoft.com/zh-tw/library/s7fekhdy%28v=vs.80%29.aspx)
 * [Exception Handling Best Practices in .NET](http://www.codeproject.com/Articles/9538/Exception-Handling-Best-Practices-in-NET#LogException.ToString%28%29;neverlogonlyException.Message11)
 * [C# Throw](http://www.dotnetperls.com/throw): 淺顯易懂
+* [C# Tester-Doer-](http://www.dotnetperls.com/tester-doer)：對使用if來判斷一個值是否為可以使用或直接用try/catch block的performance的比較。他的結論是，若是判斷的內容需要遍歷所有元素才能找出來，用try/catch會是比較好的方式。
