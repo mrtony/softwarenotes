@@ -11,6 +11,15 @@ MVC泛型 - List Dictionary
 
 ### List Example
 
+參考教學文章
+
+* [Part 74 - List collection class in c#](http://csharp-video-tutorials.blogspot.tw/2013/08/part-74-list-collection-class-in-c.html) 
+* [Part 75 - List collection class in c# continued](http://csharp-video-tutorials.blogspot.tw/2013/08/part-75-list-collection-class-in-c.html)
+
+學習過程中將範例作一次練習，並放到github - [Part-74-我的練習](https://github.com/mrtony/softwarenotes/blob/master/mvc/example/%E6%B3%9B%E5%9E%8B_List%E7%AF%84%E4%BE%8B/Part%2074%20-%20List%20collection%20class-Program.cs)
+
+此練習包含：
+
 * AddItemToList: Add()
 * 以foreach遍歷List的內容
 * Add可加入衍生類別的物件

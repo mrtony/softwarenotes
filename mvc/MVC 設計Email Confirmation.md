@@ -8,6 +8,43 @@ MVC 設計Email Confirmation
 3. sendasync的callback
 4. 
 
+## 使用Postal package寄送含View的EMail
+參考[Postal Example](http://aboutcode.net/postal/#docs)建立以View為Template內容的EMail.
+
+1. 在Nuget安裝Postal.MVC4
+2. 修改web.config設定Gmail smtp
+
+		  <system.net>
+		    <mailSettings>
+		      <smtp deliveryMethod="Network">
+		        <network defaultCredentials="false"
+		          host="smtp.gmail.com" port="587"
+		          userName="xxx@gmail.com" password="xxxxxx"
+		          enableSsl="true" />
+		      </smtp>
+		    </mailSettings>
+		  </system.net>
+3. 在Views/Emails/中新增Example.cshtml
+
+		To: @ViewBag.To
+		From: lolcats@website.com
+		Subject: Important Message
+		
+		Hello,
+		You wanted important web links right?
+		Check out this: @ViewBag.FunnyLink
+4. 在Controller中新增
+
+		using Postal;
+
+	    dynamic email = new Email("Example");
+	    email.To = "xxx@gmail.com";
+	    email.FunnyLink = "http://yahoo.com.tw";
+	    email.Send();
+
+在Email中就會產生如Example.cshtml中的內容.
+
+
 ## 參考
 * [SmtpClient MSDN](http://msdn.microsoft.com/zh-tw/library/system.net.mail.smtpclient(v=vs.110).aspx)
 * [Account Confirmation and Password Recovery with ASP.NET Identity (C#)](http://www.asp.net/identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity): 裡面有說明用SmtpClient送Email方法有成功。
