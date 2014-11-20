@@ -9,6 +9,15 @@ MVC泛型 - List Dictionary
 
 
 
+### List Example
+
+* AddItemToList: Add()
+* 以foreach遍歷List的內容
+* Add可加入衍生類別的物件
+* Insert值到List的任一個Index
+* IndexOf:取得符合條件的索引值 (3個多載)
+
+
 ### 加入物件到List
 參考 [How to: Initialize Objects by Using an Object Initializer (C# Programming Guide)](http://msdn.microsoft.com/en-us/library/bb397680.aspx)
 
