@@ -56,3 +56,17 @@ typeof(ClassName).GetProperty(PropertyName).GetValue(Instance, null);
 	System.Diagnostics.Debug.WriteLine(oStreamReader.CurrentEncoding);
 
 [過StreamReader.CurrentEncoding判斷檔案的編碼](http://www.dotblogs.com.tw/rainmaker/archive/2013/05/20/104547.aspx)
+
+## 設算程式執行時間
+使用Stopwatch類別
+
+        Stopwatch sw = new Stopwatch();
+
+        ContactDataContext db = new ContactDataContext();
+
+        var result = from contact in db.SbcApplyChange
+                     where contact.Sett == "9802398"
+                     select contact;
+        sw.Stop();
+        Console.WriteLine("Test 1: {0}ms",
+            sw.ElapsedMilliseconds);
