@@ -1,6 +1,11 @@
 MVC泛型 - List Dictionary
 ------
 
+
+## IList與List的差異及使用時機
+IList為List的Interface，所以功能是相同的。那IList的使用時機是若有可能會去改寫到List的內容，可以用IList，否則一般性使用則使用List即可。
+也因為如此，無法使用IList去new一個物件。 IList只能指向以List建立的物件。
+
 ## List 用法
 ### List的幾種宣告
 
