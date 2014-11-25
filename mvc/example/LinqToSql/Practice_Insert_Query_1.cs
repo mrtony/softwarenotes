@@ -64,5 +64,21 @@ namespace WindowsFormsApplication2LinqToSql
                 db.SubmitChanges();
             }
         }
+        
+        //執行更新Id=1的資料
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using
+            (System.IO.StreamWriter sw = new System.IO.StreamWriter(@"c:\temp\tempdatacontext.log"))
+            {
+                StudentDataContext db = new StudentDataContext();
+                db.Log = sw;
+                //assigned streamwriter to the log property of datacontext
+
+                student myStudent = db.student.Single(p => p.Id == 1);
+                myStudent.Name = "TonyCHEN";
+                db.SubmitChanges();
+            }
+        }
     }
 }
