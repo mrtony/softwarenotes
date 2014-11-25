@@ -3,8 +3,12 @@ MVC泛型 - List Dictionary
 
 
 ## IList與List的差異及使用時機
-IList為List的Interface，所以功能是相同的。那IList的使用時機是若有可能會去改寫到List的內容，可以用IList，否則一般性使用則使用List即可。
-也因為如此，無法使用IList去new一個物件。 IList只能指向以List建立的物件。
+IList為List的Interface，所以功能是相同的。
+
+那何時要使用IList？
+為了要做鬆偶合。IList是一個**Interface**，而不是一個Concrete類別，所以它可以衍生自一個以上的類別(它目前衍生自ICollection<T>, IEnumerable<T>, IEnumerable)。因此若有可能去改寫List或其它這3個類別，就要儘量使用IList。但也因為如此，無法使用IList去new一個物件。 IList只能指向以List建立的物件或其他可回傳List的函數。
+
+	IList<student> stus = new List<student>();
 
 ## List 用法
 ### List的幾種宣告

@@ -36,3 +36,19 @@ LINQ - YouTube training01
             providerName="System.Data.SqlClient" />
     </connectionStrings>
 
+### Part2 Writing LINQ Queries
+有2種LINQ Query的方式
+1. LINQ query using Lambda Expressions
+
+	IEnumerable<Student> students = Student.GetAllStudents()
+	    .Where(student => student.Gender == "Male");
+
+2. LINQ query using using SQL like query expressions
+
+		IEnumerable<Student> students = from student in Student.GetAllStudents()
+		                                where student.Gender == "Male"
+		                                select student;
+
+這2種方式沒有Performance上的差異，基本上就看個人喜好比較喜歡哪一種寫法。不過要記住，實際上用SQL Like的query寫法，最後還是會被轉換成Lambda的方式。
+
+

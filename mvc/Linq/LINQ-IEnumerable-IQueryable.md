@@ -1,6 +1,33 @@
 LINQ-IEnumerable-IQueryable
 ------
 
+
+在學習LINQ的過程中，常會被查詢結果為IEnumerable或IQueryable弄得有點混淆。在看過一些文章並作了實驗後，發現不同的查詢來源，C#會自動去使用不同的型別。使用database context就會去使用IQueryable的型別，而使用一般in-memory (像是List<string>)就會去使用IEnumerable型別來回傳。
+
+## 範例
+
+以下為2個比較範例。
+
+範例1: 使用一般in-memory回傳型別會自動套用IEnumerable
+
+	List<string> list = new List<string>()
+	{
+	    "aaa",
+	    "bbb"
+	};
+	var result1 = list.Where(item => item.Contains("b"));
+	Console.WriteLine(result.First());	//output bbb
+
+範例2: 使用database context回傳型別會自動套用IQueryable
+
+	db = new ContactDataContext();	
+	var result = db.SbcApplyChange.Where(a => a.Status == "10").Take(1);	
+	Console.WriteLine(result.First());
+
+
+
+
+## 參考
 * [IEnumerable VS IQueryable](http://www.dotnet-tricks.com/Tutorial/linq/I8SY160612-IEnumerable-VS-IQueryable.html)
 * [code-project IEnumerable Vs IQueryable](http://www.codeproject.com/Articles/732425/IEnumerable-Vs-IQueryable)
 

@@ -1,6 +1,29 @@
 未分類的C#使用技巧
 ------
 
+
+## 透過AJAX傳送的資料含空字串時，MVC binder會自動轉為Null
+
+參考這一篇[string.empty converted to null when passing JSON object to MVC Controller](http://stackoverflow.com/questions/12734083/string-empty-converted-to-null-when-passing-json-object-to-mvc-controller)。
+
+1. 建立一個類別
+
+	    public class EmptyStringBinder : DefaultModelBinder
+	    {
+	        public override object BindModel(ControllerContext controllerContext,
+	                                             ModelBindingContext bindingContext)
+	        {
+	            bindingContext.ModelMetadata.ConvertEmptyStringToNull = false;
+	            Binders = new ModelBinderDictionary() { DefaultBinder = this };
+	            return base.BindModel(controllerContext, bindingContext);
+	        }
+	    }
+2. 在global.aspx中using這個類別的namespace，再加入以下：
+
+		ModelBinders.Binders.DefaultBinder = new EmptyStringBinder();
+
+這樣之後只要ajax傳送過來的資料是空字串但有binding到屬性，就會自動填入空字串，而不是Null。
+
 ## using 陳述式在實務應用上的基本觀念
 
 有實做 IDisposable 介面的物件，可以使用using 陳述式來讓該物件所佔用的資源可全部釋放。
