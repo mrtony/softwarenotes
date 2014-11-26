@@ -51,4 +51,6 @@ LINQ - YouTube training01
 
 這2種方式沒有Performance上的差異，基本上就看個人喜好比較喜歡哪一種寫法。不過要記住，實際上用SQL Like的query寫法，最後還是會被轉換成Lambda的方式。
 
+11/26: 看了更多文件後，在用法想定調: 查SQL用SQL Like, LINQ to Object用Lambda。
+
 
