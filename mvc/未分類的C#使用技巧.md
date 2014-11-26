@@ -24,6 +24,15 @@
 
 這樣之後只要ajax傳送過來的資料是空字串但有binding到屬性，就會自動填入空字串，而不是Null。
 
+## Nullable type - int?
+原來**int?**這種寫法叫Nullable Types。 [MSDN上的定義](http://msdn.microsoft.com/en-us/library/2cf62fcy(v=vs.80).aspx)了它的用法。
+
+用了它後可以assign null給int變數，並且可做一些額外的判斷。比如說我們定義了 int? number = null; 之後可以用以下幾種方法:
+
+* number.HasValue : 如果是null就是false。
+* number.Value: 直接取number的值
+
+
 ## using 陳述式在實務應用上的基本觀念
 
 有實做 IDisposable 介面的物件，可以使用using 陳述式來讓該物件所佔用的資源可全部釋放。

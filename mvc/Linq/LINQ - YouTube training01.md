@@ -53,4 +53,16 @@ LINQ - YouTube training01
 
 11/26: 看了更多文件後，在用法想定調: 查SQL用SQL Like, LINQ to Object用Lambda。
 
+### Part4 Aggregate - Sum,Min,Max,Average
+
+    int[] Numbers = { 2, 3, 4, 5 };
+    int sum = Numbers.Sum();
+    double avg = Numbers.Average();
+    int min = Numbers.Min();
+    int max = Numbers.Max();
+
+	//sum=14,avg=3.5,min=2,max=5
+
+
+
 
