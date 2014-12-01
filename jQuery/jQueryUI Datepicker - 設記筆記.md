@@ -1,6 +1,10 @@
 jQueryUI Datepicker - 設記筆記
 ------
 
+
+
+另外在beforeshow前,我們會去抓
+
 ## 建立dp
     $( "#date-from" ).datepicker({
         dateFormat:"yy/mm/dd",
