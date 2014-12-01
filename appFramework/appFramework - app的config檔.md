@@ -21,6 +21,8 @@ intelxdk.config.android.xml,intelxdk.config.ios.xml,intelxdk.config.windows8.xml
 ## intelxdk.config.additions.xml
 對於需要在不同平台下,在IDE預設的設定中所沒有的參數, 就需要加入到這個檔案中. IDE不會自動產生這個檔案,需要自己手動加入,放在專案的根目錄下.
 
+[Intel文件](https://software.intel.com/en-us/html5/articles/adding-special-build-options-to-your-xdk-cordova-app-with-the-intelxdk-config-additions-xml-file)
+
 ## intelxdk.config.xml
 這個檔案目前已經不再使用了, 但可以做為參考來加入intelxdk.config.additions.xml
 
