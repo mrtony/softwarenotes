@@ -17,3 +17,9 @@ Using Visual Studio build and run on iOS
 2. 安裝nodejs
 3. 更新OSX到10.9.5
 4. [XCode6.1.1](https://developer.apple.com/xcode/downloads/)
+5. 執行xcode並同意授權
+6. sudo npm install -g vs-mda-remote --user=chenchihho
+7. 執行 vs-mda-remote
+8. VS中設定remote build的參數
+9. 選擇Simulator iPhone5然後build,會看到遠端機器在build code.
+10. 到OSX中的使用者資料夾,選擇remote builds中的cordovaApp/platforms/ios
