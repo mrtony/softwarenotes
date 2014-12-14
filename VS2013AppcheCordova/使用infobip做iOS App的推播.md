@@ -41,7 +41,22 @@
 
 ![](https://googledrive.com/host/0B7okXOykSneqZzhrTFVaNWx6OGM)
 
+## 加入infobip plugin
+
+在VS2013中加入infobip git, 本來以為只要在config.xml中的custom tab加入https://github.com/infobip/push-plugin-cordova.git即可,但每次加入都會導致VS2013當掉. 所以用手動的方式加入:
+
+1. 打開config.xml的程式碼檢視
+2. 加入以下
+
+	<vs:plugin name="com.infobip.push.cordova" version="0.2.5" />
+3. 在專案的plugins目錄中手動建立com.infobip.push.cordova, 並將將https://github.com/infobip/push-plugin-cordova.git下載後放入該目錄中.
+4. 進到infobip push專案, 因為之前已建立了for android的專案,所以不需再加入新app, 點選左邊Platforms, 將iOS打勾, 加入ios的certificate (.p12)後選update即可.
+5. 完成後會顯示app已支援iOS的圖案.
+6. 加入infobip提供的sample code來註冊device. 然後選擇要使用來測試的iphone手機平台來做build. 在build完成後,以xcode打開該專案,然後選擇連到MAC的iphone裝置, 然後按play標誌後即可在手機上上看到註冊訊息.
+7. 到infobip上可以看statistics看到已有一台裝置註冊. 將該app在背景執行, 傳送推播到該裝置即可看到訊息中心跳出推播訊息.
+
 
 ## 參考
 
-[Infobip Apple iOS library](https://push.infobip.com/docs/platforms/ios#apns)
+* [Infobip Apple iOS library](https://push.infobip.com/docs/platforms/ios#apns)
+* [Manage Plugins for Apps Built with Visual Studio Tools for Apache Cordova](http://msdn.microsoft.com/en-us/library/dn757051.aspx#List)

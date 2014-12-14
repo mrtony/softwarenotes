@@ -7,3 +7,5 @@
 
 Solved. I think that was an emulator problem. I download a new Google ADT and use android-19 ( Android 4.4.2 ) into emulator. Cordova version is cordova 3.5.0-0.2.4.
 
+但我後來的解決方式是安裝了
+
