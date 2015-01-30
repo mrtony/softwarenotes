@@ -6,7 +6,7 @@
             ];
         };
         
-        CustomersController.$inject = ['$scope', '$routeParams'];
+        CustomersController.$inject = ['$scope'];
 
         angular.module('customersApp')
         .controller('CustomersController', CustomersController);
