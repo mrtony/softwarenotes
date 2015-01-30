@@ -1,0 +1,22 @@
+
+<h2>{{appSettings.title}}</h2>
+<input type="text" ng-model="customerFilter" />
+<br />
+<br />
+<table>
+<tr>
+  <th>Name</th>
+  <th>City</th>
+  <th>Joined</th>
+  <th>Orders</th>
+</tr>
+<tr data-ng-repeat="cus in customers | filter:customerFilter">
+  <td>{{cus.name}}</td>
+  <td>{{cus.city}}</td>
+  <td>{{cus.joined}}</td>
+  <td><a href="#/Orders/{{cus.id}}">View Order</a></td>
+</tr>
+<tr></tr>
+</table>
+<br />
+<footer>Version:{{appSettings.version}}</footer>

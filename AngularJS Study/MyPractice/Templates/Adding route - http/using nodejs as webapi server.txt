@@ -1,0 +1,10 @@
+
+1.先安裝好node. http://nodejs.org/
+
+2.將server.js放在工作目錄中
+
+3.在檔案總管中,切換到工作目錄, 按住shift後再按右鍵,選擇"在此處開啟命令視窗"
+
+4.安裝express, 打入 npm install express
+
+5.打入 node serve.js
