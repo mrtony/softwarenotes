@@ -4,7 +4,10 @@
             $scope.orders = null;
 
             function init () {
-                $scope.customer = customersFactory.getCustomer(customerId);
+                customersFactory.getCustomer(customerId)
+                    .success(function(customer) {
+                        $scope.customer = customer;
+                    })
             }
             
             init();

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="gemsApp">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Adding controller to a module</title>
+  <link rel="stylesheet" href="./bootstrap.css" />
+  <link rel="stylesheet" href="./bootstrap-theme.css" />
+
+  <script src="./angular.js"></script>
+  <script src="./app.js"></script>
+  <script src="./controllers/gemsController.js"></script>
+  <script src="./controllers/panelController.js"></script>
+  <script src="./services/gemsFactory.js"></script>
+</head>
+
+<body ng-controller="GemsController">
+    <ul>
+        <li class="list-group-item" ng-repeat="gem in gems">
+            <h3>
+             {{gem.name}}
+             <em class="pull-right">{{gem.price | currency}}</em>
+            </h3>
+            <img ng-src="{{gem.images[0]}}"/>
+            <section ng-controller="PanelController">
+                <ul class="nav nav-pills">
+                    <li ng-class="{active: isSelected(1)}"><a href ng-click="selectTab(1)">Description</a></li>
+                    <li ng-class="{active: isSelected(2)}"><a href ng-click="selectTab(2)">Spcifications</a></li>
+                    <li ng-class="{active: isSelected(3)}"><a href ng-click="selectTab(3)">Reviews</a></li>
+                </ul>
+            
+                <div class="panel" ng-show="isSelected(1)">
+                    <h4>Description</h4>
+                    <p>{{gem.description}}</p>
+                </div>
+                <div class="panel" ng-show="isSelected(2)">
+                    <h4>Specifications</h4>
+                    <blockquote>Not yet</blockquote>
+                </div>
+                <div class="panel" ng-show="isSelected(3)">
+                    <h4>Reviews</h4>
+                    <blockquote ng-repeat="storedReview in gem.reviews">
+                        <b>Stars:{{storedReview.stars}}</b>
+                        {{storedReview.body}}
+                        <br />
+                        <cite>by:{{storedReview.author}}</cite>
+                    </blockquote>
+
+                    <form name="reviewForm" ng-submit="addReview(gem)">
+                        <blockquote>
+                            <b>Stars:{{review.stars}}</b>
+                            {{review.body}}
+                            <br />
+                            <cite>by:{{review.author}}</cite>
+                        </blockquote>
+
+                        <select ng-model="review.stars">
+                            <option value="">Rate product</option>
+                            <option value="1">1 star</option>
+                            <option value="2">2 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="5">5 stars</option>
+                        </select>
+                        <br />
+                        <textarea ng-model="review.body"></textarea>
+                        <br />
+                        <label>by:</label>
+                        <input type="email" ng-model="review.author" />
+                        <input type="submit" value="submit" />
+                    </form>
+                </div>
+            </section>
+        </li>
+    </ul>
+
+</body>
+</html>
