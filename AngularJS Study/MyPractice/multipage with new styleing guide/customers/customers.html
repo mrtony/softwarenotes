@@ -5,16 +5,18 @@
 <br />
 <table class="table table-striped">
 <tr>
+  <th>ID</th>
   <th>Name</th>
   <th>City</th>
   <th>Joined</th>
   <th>Orders</th>
 </tr>
-<tr data-ng-repeat="cus in customers | filter:customerFilter">
+<tr data-ng-repeat="cus in vm.customers | filter:customerFilter">
+  <td>{{cus.id}}</td>
   <td>{{cus.name}}</td>
   <td>{{cus.city}}</td>
   <td>{{cus.joined}}</td>
-  <td><a href="#/Orders/{{cus.id}}">View Order</a></td>
+  <td><button ng-click="vm.loadOrder(cus.id)">Description</button></td>
 </tr>
 <tr></tr>
 </table>

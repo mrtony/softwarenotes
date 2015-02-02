@@ -10,7 +10,7 @@
   <th>Joined</th>
   <th>Orders</th>
 </tr>
-<tr data-ng-repeat="cus in customers | filter:customerFilter">
+<tr data-ng-repeat="cus in vm.customers | filter:customerFilter">
   <td>{{cus.name}}</td>
   <td>{{cus.city}}</td>
   <td>{{cus.joined}}</td>
