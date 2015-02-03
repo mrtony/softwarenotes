@@ -1,0 +1,3 @@
+
+//有一個form的CRUD的設計參考
+http://viralpatel.net/blogs/angularjs-service-factory-tutorial/
