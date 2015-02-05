@@ -1,0 +1,22 @@
+
+<h2>Movies</h2>
+<input type="text" ng-model="movieFilter" />
+<br />
+<br />
+<table class="table">
+<tr>
+  <th>ID</th>
+  <th>Title</th>
+  <th>Director</th>
+  <th>Genre</th>
+  <th>Release Year</th>
+</tr>
+<tr data-ng-repeat="movie in vm.movies | filter:movieFilter">
+  <td>{{movie._id}}</td>
+  <td>{{movie.title}}</td>
+  <td>{{movie.director}}</td>
+  <td>{{movie.genre}}</td>
+  <td>{{movie.releaseYear}}</td>
+</tr>
+<tr></tr>
+</table>
