@@ -2,7 +2,9 @@
     angular.module('app.weathers')
         .controller('Weathers', Weathers);
 
-    var Weathers = function(dataservice) {
+    Weather.$inject = ['dataservice'];
+    
+    function Weathers(dataservice) {
         var vm = this;
 
         vm.weathers = {};
