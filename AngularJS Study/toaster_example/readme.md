@@ -29,3 +29,10 @@
         logger.success('message:Test View is displayed','data:only can see in console','title:TEST');
         logger.wait('message:Test View is displayed','data:only can see in console','title:TEST');
 ```
+12. 若要使用config來設定toaster的內定屬性,可以使用以下方式
+```
+    function toasterConfig(toasterConfig) {
+        toasterConfig['time-out'] = 1000;
+        toasterConfig['position-class'] = 'toast-bottom-right';
+    }
+```
