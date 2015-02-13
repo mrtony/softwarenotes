@@ -13,6 +13,3 @@ IIS7和IIS8的使用
 ![](https://googledrive.com/host/0B7okXOykSneqYTN6cGlZTGNaY3M)
 
 也可以在IIS中安裝支援PHP或Python
-
-
-<script src="https://gist.github.com/mrtony/53cf3889a62b5ec1ca21.js"></script>
