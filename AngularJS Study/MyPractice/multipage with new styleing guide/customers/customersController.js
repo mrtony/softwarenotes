@@ -17,7 +17,7 @@
 
         CustomersController.$inject = ['$location'];
     
-        angular.module('customers.controllers')
+        angular.module('customersApp')
         .controller('CustomersController', CustomersController);
        
 }());

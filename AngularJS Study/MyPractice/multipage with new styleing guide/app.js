@@ -1,6 +1,6 @@
 //option3
 (function() {
-    var app = angular.module('customersApp', ['ngRoute','customers.controllers']);
+    var app = angular.module('customersApp', ['ngRoute']);
     
     app
     .config(function($routeProvider, $locationProvider){

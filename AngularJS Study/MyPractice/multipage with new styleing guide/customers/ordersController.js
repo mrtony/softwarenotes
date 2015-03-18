@@ -23,7 +23,7 @@
         
         OrdersController.$inject = ['$routeParams'];
         
-        angular.module('customers.controllers')
+        angular.module('customersApp')
         .controller('OrdersController', OrdersController);
        
 }());
