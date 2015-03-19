@@ -1,0 +1,8 @@
+{
+    "name": "node-api",
+    "main": "server.js",
+    "dependencies": {
+      "cors": "^2.2.0",
+      "express": "^4.9.3"
+    }
+}
