@@ -16,10 +16,10 @@
 
 <h2>Highcharts-ng example</h2>
 
-<div ng-controller="Demo as vm">
+<div ng-controller="BarChart as vm">
 {{vm.message.data}}
-    <div class="row">
-        <highchart id="chart1" config="vm.chartConfig" class="span10"></highchart>
+    <div>
+        <div google-chart chart="vm.chart" style="{{vm.chart.cssStyle}}"/>
     </div>
 </div>  <!-- ng-controller -->
 
@@ -28,8 +28,7 @@
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/bower_components/angular/angular.js"></script>
-<script src="/bower_components/highstock-release/highstock.js"></script>
-<script src="/bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+<script src="/bower_components/angular-google-chart/ng-google-chart.js"></script>
 
 <!-- inject:js -->
 <!-- Bootstrapping -->
