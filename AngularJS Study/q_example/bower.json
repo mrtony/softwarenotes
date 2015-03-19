@@ -1,0 +1,28 @@
+{
+  "name": "SKIS After Market",
+  "version": "0.0.2",
+  "description": "SKIS After Market",
+  "authors": [
+    "Tony Chen"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/johnpapa/ng-demos",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "pages",
+    "index.html",
+    "/js"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.2.24"
+  },
+  "dependencies": {
+    "angular": "~1.2.24",
+    "bootstrap": "~3.3.4",
+    "font-awesome": "~4.0.3"
+  }
+}

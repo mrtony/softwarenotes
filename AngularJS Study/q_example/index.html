@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-ng-app="app" ng-strict-di>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <!-- inject-vendor:css -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- endinject -->
+
+</head>
+<body>
+
+<div ng-controller="Demo as vm">
+    {{vm.message.data}} <br/>
+    {{vm.getMoney}}
+</div>  <!-- ng-controller -->
+
+<!-- inject-vendor:js -->
+<script src="/bower_components/angular/angular.js"></script>
+
+<!-- inject:js -->
+<!-- Bootstrapping -->
+<script src="app.js"></script>
+
+<!-- Demo -->
+<script src="demo.js"></script>
+
+<!-- endinject -->
+</body>
+</html>
