@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <!-- inject-vendor:css -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- endinject -->
+</head>
+<body>
+
+<h2>Highcharts example</h2>
+
+
+<div id="container" style="height: 400px; min-width: 310px"></div>
+
+<!-- inject-vendor:js -->
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/bower_components/highstock-release/highstock.js"></script>
+<!-- endinject -->
+
+<script>
+    $(function () {
+
+        $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+            // Create the chart
+            $('#container').highcharts('StockChart', {
+
+                rangeSelector : {
+                    selected : 2,
+                    enabled: true
+                },
+
+                title : {
+                    text : 'AAPL Stock Price'
+                },
+
+                series : [{
+                    name : 'AAPL',
+                    data : data,
+                    tooltip: {
+                        valueDecimals: 2
+                    }
+                }]
+            });
+        });
+
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "SKIS After Market",
+  "version": "0.0.2",
+  "description": "SKIS After Market",
+  "authors": [
+    "Tony Chen"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/johnpapa/ng-demos",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "pages",
+    "index.html",
+    "/js"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "font-awesome": "~4.0.3",
+    "highcharts-ng": "~0.0.8",
+    "highstock-release": "~2.1.4"
+  }
+}
